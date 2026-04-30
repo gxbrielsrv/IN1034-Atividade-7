@@ -4,7 +4,7 @@ import math
 import random
 
 def PPT():
-    pontos = 0
+    pontosuser = 0
     pontosbot = 0
     while True:
     
@@ -19,20 +19,21 @@ def PPT():
         elif escolha == 'papel' and escolhabot == 'pedra' or \
         escolha == 'pedra' and escolhabot == 'tesoura' or \
         escolha == 'tesoura' and escolhabot == 'papel':
-            print('----VOCÊ GANHOU!-----')
+            print('-----VOCÊ GANHOU!-----')
             pontosuser += 1
         else:
             print('-----VOCÊ PERDEU!-----')
             pontosbot += 1
         print('=' * 50)
         print('Pontuaçao final:')
-        print(f'pontosuser bot: {pontosbot}')
-        print(f'pontosuser usuario: {pontosuser}')
+        print(f'Pontos do bot: {pontosbot}')
+        print(f'Pontos do usuario: {pontosuser}')
         print('=' * 50)
-        continuar = input('quer continuar? ')
+        continuar = input('Mais uma rodada(sim/nao)? ')
         if continuar == 'sim':
-            print('Continuando...')
+            print('Ok... Boa sorte!')
         else:
+            print('Tudo bem! Até a proxima!')
             break 
 
 PPT()
@@ -115,4 +116,4 @@ def calculadora():
         else:
             print('Operação inválida')
 
-calculadora()
+#calculadora()
