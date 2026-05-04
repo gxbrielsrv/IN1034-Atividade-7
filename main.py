@@ -36,18 +36,7 @@ def PPT():
             print('Tudo bem! Até a proxima!')
             break 
 
-PPT()
-
-
-
-
-
-
-
-
-
-
-
+#PPT()
 
 
 #CALCULADORA
@@ -116,4 +105,7 @@ def calculadora():
         else:
             print('Operação inválida')
 
-#calculadora()
+calculadora()
+
+
+#JOGO DA FORCA
