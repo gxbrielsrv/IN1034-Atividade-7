@@ -1,9 +1,8 @@
 import math
-
-#PEDRA, PAPEL E TESOURA
 import random
 
-def PPT():
+#PEDRA, PAPEL E TESOURA
+def pedra_papel_tesoura():
     pontosuser = 0
     pontosbot = 0
     while True:
@@ -36,76 +35,79 @@ def PPT():
             print('Tudo bem! Até a proxima!')
             break 
 
-#PPT()
+#pedra_papel_tesoura()
 
-
-#CALCULADORA
-def calculadora():
-    
-    print('Operadores disponiveis: ')
-    print('=' * 30)
-    print('+ Adição')
-    print('- Subtração')
-    print('X Multiplicação')
-    print('/ Divisão')
-    print('=' * 30)
-
-    a = float(input('Insira o valor do primeiro número: '))
-    operador = input('Insira o operador desejado: ')
-    b = float(input('Insira o valor do segundo número: '))
-
-    if operador == '+':
-        resultado = a+b
-        print(f'{a} + {b} = {resultado}')
-    elif operador == '-':
-        resultado = a-b
-        print(f'{a} - {b} = {resultado}')
-    elif operador == 'X':
-        resultado = a*b
-        print(f'{a} X {b} = {resultado}')
-    elif operador == '/':
-        resultado = a/b
-        print(f'{a} / {b} = {resultado}')
-    else:
-        print('Operação inválida')
-
-    while True:
-
-        entrada = input('Utilizar  o resultado da ultima operação? (sim/nao): ')
-
-        if entrada != 'sim':
-            print('Ok')
-            resultado = a = float(input('Insira o valor de a: '))
-            
-        print('Operadores disponiveis: ')
-        print('=' * 30)
-        print('+ Adição')
-        print('- Subtração')
-        print('X Multiplicação')
-        print('/ Divisão')
-        print('=' * 30)
-
-        novooperador = input('Insira o novo operador desejado: ')
-        c = float(input('Insira o valor do segundo número: '))
-        
-        ultimaoperacao = resultado
-
-        if novooperador == '+':
-            resultado = ultimaoperacao + c
-            print(f'{ultimaoperacao} + {c} = {resultado}')
-        elif novooperador == '-':
-            resultado = ultimaoperacao - c
-            print(f'{ultimaoperacao} - {c} = {resultado}')
-        elif novooperador == 'X':
-            resultado = ultimaoperacao * c
-            print(f'{ultimaoperacao} X {c} = {resultado}')
-        elif novooperador == '/':
-            resultado = ultimaoperacao/c
-            print(f'{ultimaoperacao} / {c} = {resultado}')
-        else:
-            print('Operação inválida')
-
-calculadora()
 
 
 #JOGO DA FORCA
+def forca():
+    palavras = ['arroz', 'batata', 'banana', 'lasanha', 'presunto']
+    tema = 'Comidas'
+    while True:
+        palavra = random.choice(palavras)
+        chute_correto = '_' * len(palavra)
+        vidas = 6
+
+        print('=== JOGO DA FORCA ===')
+        print(f'==> Tema: {tema} ')
+        while vidas > 0 and '_' in chute_correto:
+            print('Palavra:', chute_correto)
+            print('Vidas:', vidas)
+
+            chute = input('Digite uma letra ou a palavra inteira: ')
+
+            valido = True
+            for letra in chute:
+                if letra < 'a' or letra > 'z':
+                    valido = False
+
+            if valido == False:
+                print('Digite apenas letras!')
+                
+
+            #chute de uma palavra
+            if len(chute) > 1:
+                if chute == palavra:
+                    chute_correto = palavra
+                    print('Você acertou a palavra. Parabéns!')
+                    break
+                else:
+                    print('Errou o chute!')
+                    vidas -= 1
+                    
+
+            # chute de uma letra 
+            letra =  chute
+
+            if letra in palavra:
+                print('Acertou!')
+
+                nova = ''
+                cont = 0
+
+                while cont < len(palavra):
+                    if palavra[cont] == letra:
+                        nova += letra
+                    else:
+                        nova += chute_correto[cont]
+                    cont += 1
+
+                chute_correto = nova
+            else:
+                print('Errou!')
+                vidas -= 1
+
+        if '_' in chute_correto:
+            print('Você perdeu!')
+            print('A palavra era:', palavra)
+        else:
+            print('Você ganhou!')
+            print('Palavra:', palavra)
+
+        jogar = input('Quer jogar de novo? (sim/nao): ')
+        if jogar == 'nao':
+            print('Tudo bem. Te vejo na proxima!!')
+            break
+
+#forca()
+
